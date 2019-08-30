@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lamg="ja">
+
+<head>
+    <title>SRM730Easy</title>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+<h1>SRM730Easy</h1>
+    <h2>問題概要</h2>
+    <p>二分木とそのノードごとの重さが与えられます．今から以下のようなゲームをするときそのスコアの瞬間的な最大値が最小となるよう
+        立ち回った時そのスコアを求めなさい．
+    </p>
+    <p>
+        ゲームのルール:<br>
+        各ノードに石を一つずつ置いていき，最終的にルートに石が置かれる状態をゴールとします．プレイヤーが行えるのは石を置くことと
+        取り除くことで，取り除く場合はどこでも可能ですが置く場合にはそのノードの子ノードが石で埋まっていることが条件です．スコアは
+        石が置かれているノードの重さの合計で定まり，重さは全て1以上であることが保証されています．
+    </p>
+    <h2>考え方</h2>
+    <p>
+        子ノードが埋まっている必要があるため，片方ずつ子ノードの系譜を埋めていく必要がある．そのため
+        あるノードまでのスコアの最大を知りたい場合は片方ずつDFSしてやればよい．つまり二分木を用意しDFSしつつ
+        DFSしつつスコアを書き換えていけばよいということになる．
+    </p>
+    <p>
+        が，ここまで解法を考えたが一番の問題が実装できない．最初調べたがどうもうまくできない．二分木を持ちDFSという実装を未だやったことが無いという
+        体たらくぶりで何も進まなくなってしまったため泣く泣くていたいさんのブログに助けを求めることにしました．幸い方針は
+        似ているようなのでそこは助かった、、精進大事ですよね、クラスで木を持つのも勉強しておかないとなあ
+    </p>
+    <a href="http://ncastar.hatenablog.com/entry/2018/02/21/002428">ていたいさんのブログ</a>
+    <h2>実装方針</h2>
+    <p>
+        基本的な方向性は上で述べた通り．DFSについて子ノード数によってとるべき値が変化する．葉の場合は自分の
+        重さ．子ノードが一つの時は必ずその子ノード以下も埋めないといけず，またその子ノードも通らざるを得ないのでそこまでの最大値と子ノード+親ノードの
+        重さの最大値の最大となる．子ノードが二つの場合は左の子ノードと右の子ノードどちらを取っておくか選べるため
+        それぞれに行き着くまでの最大値を求めたうえで残す方を選択，つまり最小値をとる．
+    </p>
+    
+        <h2>コード</h2>
+<code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+<li style="background-color:#EFF;">#include &lt;bits/stdc++.h&gt;</li>
+<li style="background-color:#EEF;">using namespace std;</li>
+<li style="background-color:#EFF;">vector&lt;int&gt; G[20000];</li>
+<li style="background-color:#EEF;">vector&lt;int&gt; W;</li>
+<li style="background-color:#EFF;">int V;</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">int dfs(int cur)</li>
+<li style="background-color:#EEF;">{</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;if (G[cur].size() == 0)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return W[cur];</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;else if (G[cur].size() == 1)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return max(W[cur] + W[G[cur][0]], dfs(G[cur][0]));</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;else</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int ret = 0;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int left = G[cur][0], right = G[cur][1];</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int lmax = dfs(left), rmax = dfs(right);</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret = max(lmax, rmax);</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret = max(ret, min(lmax + W[right], rmax + W[left]));</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ret = max(ret, W[cur] + W[left] + W[right]);</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return ret;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">}</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">class StonesOnATree</li>
+<li style="background-color:#EEF;">{</li>
+<li style="background-color:#EFF;">public:</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;int minStones(vector&lt;int&gt; p, vector&lt;int&gt; w)</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;V = w.size();</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; V; i++)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;W.push_back(w[i]);</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; p.size(); i++)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G[p[i]].push_back(i + 1);</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return dfs(0);</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">};</li>
+</ol></code>
+
+</body>
