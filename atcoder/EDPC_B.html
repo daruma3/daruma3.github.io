@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lamg="ja">
+
+<head>
+    <title>SRM730Easy</title>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+<h1>EDPC B Frog2</h1>
+    <h2>問題概要</h2>
+    <h3><a href="https://atcoder.jp/contests/dp/tasks/dp_b">問題</a>
+    <p>全部でN個ある足場をカエルが渡ります．一度に1からK個先の足場までどこにでも飛べますが
+    飛ぶたびに高さの差|h[後]-h[前]|がコストとしてかかります．このコストが最小となるように
+    N個先まで飛んだ時そのコストを求めなさい．
+    </p>
+    
+    <h2>反省</h2>
+    <p>
+        メモ化とは何かが分かっていなかったため，main関数中で作った配列をいちいち再帰関数で呼び出したことでオーバーフロー
+        とTLEの嵐．メモの意味を考えた結果グローバルで配列宣言することには成功したがTLEはなおらなかった．常に再帰させてたら
+        間に合うわけもなく，二重ループを使えばよかったのね．
+    </p>
+    
+    <h2>実装方針</h2>
+    <p>
+        DPを実装するだけ．
+        dp[i+j]=min(dp[i+j],abs(h[i]-h[i+j])+dp[i])
+        をnとkで二重ループ．
+    </p>
+    
+        <h2>コード</h2>
+        <code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;color:#000;">
+<li style="background-color:#EFF;">#include&lt;bits/stdc++.h&gt;</li>
+<li style="background-color:#EEF;">using namespace std;</li>
+<li style="background-color:#EFF;">const long long INF=1000000000;</li>
+<li style="background-color:#EEF;">typedef long long ll;</li>
+<li style="background-color:#EFF;">ll dp[1000003];</li>
+<li style="background-color:#EEF;">ll n, k;</li>
+<li style="background-color:#EFF;">ll high[100005];</li>
+<li style="background-color:#EEF;">int main(){</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;cin &gt;&gt; n&gt;&gt;k;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n;i++){</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; high[i];</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;for (int i = 0; i &lt; n;i++){</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i] = INF;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;dp[0] = 0;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;for (int tmp = 0; tmp &lt; n; tmp++){</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= k; i++){</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (i + tmp &gt;= n)</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else{</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i + tmp] = min(dp[i + tmp], abs(high[tmp] - high[i + tmp]) + dp[tmp]);</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; dp[n - 1];</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;return 0;</li>
+<li style="background-color:#EEF;">}</li>
+</ol></code>
+</body>
