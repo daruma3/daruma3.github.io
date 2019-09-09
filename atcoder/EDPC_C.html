@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lamg="ja">
+
+<head>
+    <title>EDPC_C</title>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+<h1>EDPC C Vacation</h1>
+    <h2>問題概要</h2>
+    <h3><a href="https://atcoder.jp/contests/dp/tasks/dp_c">問題</a></h3>
+    <p>夏休みN日間をA～C，三つのタスクのいづれかを毎日行うことで実りあるものにすることにしました．
+    i日目におけるこれらのタスクの幸福度はa<sub>i</sub>,b<sub>i</sub>,c<sub>i</sub>で定められており，
+    また飽きっぽいので二日連続同じ種類のタスクを行うことはできない．幸福度の最大値を求めよ．
+    </p>
+
+    <h2>反省</h2>
+    <p>前日のを使えないということから二日前も関係あるのか?と思い最初三項間漸化式かと思った()．普通に
+    漸化式っぽいのを思いつくまではいったものの前日行ったタスクの保持方法が思いつかず撃沈．
+    </p>
+    
+    <h2>考察</h2>
+    <p>
+        二日連続がだめということは，前日に異なるタスクを選ばなければいけない．漸化式は<br>
+        dp[i+1][j]=max(dp[i+1][j],dp[i][k]+happy[i][j])(ただしj!=k)<br>
+        となる．これをループさせていけばよい．
+    </p>
+    
+     
+    <h2>コード</h2>
+    <div style="overflow:scroll;padding:0;background-color:margin:0;background-color:#EEF;width:100%;"><code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;white-space: nowrap;color:#000;">
+<li style="background-color:#EEF;">#include&lt;bits/stdc++.h&gt;</li>
+<li style="background-color:#EFF;">using namespace std;</li>
+<li style="background-color:#EEF;">const long long INF=1000000000;</li>
+<li style="background-color:#EFF;">typedef long long ll;</li>
+<li style="background-color:#EEF;">#define rep(i, n) for(int i = 0; i &lt; n;i++)</li>
+<li style="background-color:#EFF;">ll n,dp[100005][3];</li>
+<li style="background-color:#EEF;">int main(){</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;cin&gt;&gt;n;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;ll happy[n][3];</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;rep(i,n) cin &gt;&gt; happy[i][0] &gt;&gt; happy[i][1] &gt;&gt; happy[i][2];</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;rep(i,n)</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(j,3) dp[i][j] = -INF;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;rep(j,3)  dp[0][j] = 0;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;rep(i, n){</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(j, 3){</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(k, 3){</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (j == k) continue;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dp[i + 1][j] = max(dp[i + 1][j], dp[i][k] + happy[i][j]);</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;ll ans = -INF;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;rep(i, 3) ans = max(ans, dp[n][i]);</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;cout &lt;&lt; ans &lt;&lt; endl;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;return 0;</li>
+<li style="background-color:#EFF;">}</li>
+</ol></code></div>
+        
+</body>
