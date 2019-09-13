@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lamg="ja">
+
+<head>
+    <title>SRM668Easy</title>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+<h1>SRM668Easy</h1>
+    <h2>問題概要</h2>
+    <p>床がR*Cマスに分割されています．上下左右の移動により全てのマスをK回ずつ踏むことができる場合は"Print"を，
+    そうでない場合は"Cannot print"を返しなさい．
+    </p>
+    
+    <h2>考え方</h2>
+    <p>
+        K==1の時は自明．そうでない場合について考える．実際にやってみると分かるが，ただくるくる回るだけだとスタート地点とゴール地点で
+        回数が足りなくなる．そのため全ての行または列についてK往復することを考えるがそれでも端のマスだけ足りない．端のマスを一度に
+        二度踏めないからだ．そこで逆に端しかない場合を考える．つまり二マスセットを作り両方K回踏んだら次の二マスに移る．</p>
+        <p>
+        うん，これならうまくK回ずつ踏めそうだ．だから踏める条件は，K>2の時は二マスセットを作れるR*C%2==0の時となる．
+    </p>
+    
+        <h2>コード</h2>
+    <div style="overflow:scroll;padding:0;background-color:margin:0;background-color:#EEF;width:100%;"><code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;white-space: nowrap;color:#000;">
+<li style="background-color:#EEF;">#include &lt;bits/stdc++.h&gt;</li>
+<li style="background-color:#EFF;">using namespace std;</li>
+<li style="background-color:#EEF;">class PaintTheRoom {</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;public:</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;string canPaintEvenly(int R, int C, int K) {</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(R*C%2==0 or K==1) return <font style="color:brown;">"Paint"</font>;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else return <font style="color:brown;">"Cannot paint"</font>;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">};</li>
+</ol></code></div>
+
+</body>
