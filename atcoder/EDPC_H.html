@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lamg="ja">
+
+<head>
+    <title>EDPC_H</title>
+    <script async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+
+<body>
+    <h1>EDPC H GRID1</h1>
+    <h2>問題概要</h2>
+    <h3><a href="https://atcoder.jp/contests/dp/tasks/dp_h">問題</a></h3>
+    <p>H×Wのグリッドが与えられ，それぞれには'.'又は'#'が書かれています．このグリッドが'.'は道で'#'は壁である
+        迷路を示すとき，(1,1)から出発し
+        右か下に移動していくとき(H,W)に行く経路は何通りあるでしょうか．1e+7でmodをとって答えてください．
+    </p>
+
+
+    <h2>方針</h2>
+    <p>
+        最初再帰で書いたが全然間に合わない．計算量全く考えずにやるのはやめるべき．道には1を，壁には0を割り振ったのち
+        中学受験のように手前二つのマスの数字を足す，というようにやったらスーパー―余裕で通った．O(HW)まで落ちるのだから
+        当たり前である．
+    </p>
+
+
+    <h2>コード</h2>
+    <div style="overflow:scroll;padding:0;background-color:margin:0;background-color:#EEF;width:100%;"><code>
+<ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#EEF;white-space: nowrap;color:#000;">
+<li style="background-color:#EEF;">#include &lt;bits/stdc++.h&gt;</li>
+<li style="background-color:#EFF;">using namespace std;</li>
+<li style="background-color:#EEF;">typedef long long ll;</li>
+<li style="background-color:#EFF;">const ll INF = 1e18;</li>
+<li style="background-color:#EEF;">const int INT_INF = 1e9;</li>
+<li style="background-color:#EFF;">const ll MOD = 1e9 + 7;</li>
+<li style="background-color:#EEF;">const int INT_MOD=1e9+7;</li>
+<li style="background-color:#EFF;">#define rep(i, n) for(int i = 0; i &lt; n; i++)</li>
+<li style="background-color:#EEF;">#define REP(i, n) for(int i = 0; i &lt;= n; i++)</li>
+<li style="background-color:#EFF;">#define rrep(i,n) for(int i=n;i&gt;0;i--)</li>
+<li style="background-color:#EEF;">#define RREP(i,n) for(int i=n;i&gt;=0;i--)</li>
+<li style="background-color:#EFF;">typedef pair&lt;int, int&gt; Pi;</li>
+<li style="background-color:#EEF;">typedef pair&lt;double, double&gt; P;</li>
+<li style="background-color:#EFF;">using fint64 = int_fast64_t;</li>
+<li style="background-color:#EEF;">int dx[2]={1,0},dy[2]={0,1};</li>
+<li style="background-color:#EFF;">int dp[1005][1005];</li>
+<li style="background-color:#EEF;">char grid[1005][1005];</li>
+<li style="background-color:#EFF;">int h,w;</li>
+<li style="background-color:#EEF;"></li>
+<li style="background-color:#EFF;">int main() { </li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;cin&gt;&gt;h&gt;&gt;w;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;rep(i,h){</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(j,w){</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cin&gt;&gt;grid[j][i];</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(grid[j][i]==<font style="color:brown;">'.'</font>) dp[j][i]=1;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else dp[j][i]=0;</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;dp[0][0]=1;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;rep(i,h){</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(j,w){</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(dp[j][i]!=0){</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(i!=0 and j!=0) dp[j][i]=(dp[j-1][i]+dp[j][i-1])%INT_MOD;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if(i!=0 and j==0) dp[j][i]=dp[j][i-1];</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if(i==0 and j!=0) dp[j][i]=dp[j-1][i];</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+<li style="background-color:#EEF;">&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;dp[w-1][h-1]%INT_MOD&lt;&lt;endl;</li>
+<li style="background-color:#EFF;">&nbsp;&nbsp;&nbsp;&nbsp;return 0;</li>
+<li style="background-color:#EEF;">}</li>
+<li style="background-color:#EFF;"></li>
+</ol></code></div>
+
+</body>
