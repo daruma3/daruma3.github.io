@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lamg="ja">
+
+<head>
+    <title>Circle and Points</title>
+    <script async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+
+<body>
+    <h1>Circle and Points</h1>
+    <h2>問題概要</h2>
+    <a href="http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1132&lang=jp">問題</a>
+    <p>10*10の平面状に点がN(&lt;=300)個おかれます．その点を半径1の円で囲むとき，囲める点の最大数を求めてください．なおこのとき
+        任意の二点の距離がほぼ2になることは無く，任意の三点が同時に半径1の円周上に存在するようなこともないことが保証されている．
+    </p>
+    <h2>考え方</h2>
+    <p>
+        幾何の問題と言えばのギリギリを考えます．今回は三点が同時に円周上に無いことが確かなため，どれか2点が円周上に存在する場合が
+        ギリギリとなる.全ての二点のペアについて円周上に乗る時を考え，内包点が最多となるときを探せばよい．これは
+        ペアの作成にO(n<sup>2</sup>),それぞれで内包の確認O(n)，〆てO(n<sup>3</sup>)となるが、N(&lt;=300)より
+        間に合います．
+
+    </p>
+
+
+    <h2>コード</h2>
+    <div style="overflow:scroll;padding:0;background-color:margin:0;background-color:#000;width:100%;"><code>
+        <ol style="list-style:decimal-leading-zero outside;in-left:0;padding-left:36px;margin:0;background-color:#000;white-space: nowrap;color:#FFF;">
+        <li>#include &lt;bits/stdc++.h&gt;</li>
+        <li>using namespace std;</li>
+        <li>const double EPS = 1e-9;   <font style="color:lightgreen;font-style:italic;">// 許容誤差。問題によって変える</font></li>
+        <li>const double pi=M_PI;</li>
+        <li>const double INFD=1e+9;</li>
+        <li>typedef complex&lt;double&gt; P; <font style="color:lightgreen;font-style:italic;">// Point</font></li>
+        <li>#define rep(i,n) for(int i=0;i&lt;n;i++)</li>
+        <li><font style="color:lightgreen;font-style:italic;">//点の座標は複素数で持つ</font></li>
+        <li>#define X real()</li>
+        <li>#define Y imag()</li>
+        <li>namespace std{</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;bool operator&lt;(const P p1, const P p2){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return p1.X != p2.X ? p1.X &lt; p2.X : p1.Y &lt; p2.Y;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P operator+(const P p1, const P p2) { return P(p1.X + p2.X, p1.Y + p2.Y); }</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P operator-(const P p1, const P p2) { return P(p1.X - p2.X, p1.Y - p2.Y); }</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P operator*(const P p, double k) { return P(p.X * k, p.Y * k); }</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P operator/(const P p, double k) { return P(p.X / k, p.Y / k); }</li>
+        <li>} </li>
+        <li><font style="color:lightgreen;font-style:italic;">//Segment/L</font></li>
+        <li>struct Segment{</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P p1, p2;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;Segment() {}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;Segment(P p1, P p2) : p1(p1), p2(p2) {}</li>
+        <li>};</li>
+        <li>typedef Segment L;</li>
+        <li></li>
+        <li>double norm(P &amp;p1, P &amp;p2){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return (p1.X - p2.X) * (p1.X - p2.X) + (p1.Y - p2.Y) * (p1.Y - p2.Y);</li>
+        <li>}</li>
+        <li></li>
+        <li>double cross(const P &amp;a, const P &amp;b){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return (conj(a) * b).Y;</li>
+        <li>}</li>
+        <li></li>
+        <li>double dot(const P &amp;a, const P &amp;b){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return (conj(a) * b).X;</li>
+        <li>}</li>
+        <li></li>
+        <li>P Projection(L l, P p){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P base = l.p2 - l.p1;                        <font style="color:lightgreen;font-style:italic;">//始点</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;double r = dot(p - l.p1, base) / norm(base); <font style="color:lightgreen;font-style:italic;">//線分に対する倍率の計算</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return l.p1 + base * r;</li>
+        <li>}</li>
+        <li></li>
+        <li>double distanceLP(const L &amp;l, const P &amp;p){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return abs(p - Projection(l, p));</li>
+        <li>}</li>
+        <li><font style="color:lightgreen;font-style:italic;">//Circle</font></li>
+        <li>struct Circle{</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P p;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;double r;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;Circle(const P &amp;p,double r) : p(p),r(r){}</li>
+        <li>};</li>
+        <li>typedef Circle C;</li>
+        <li></li>
+        <li>vector&lt;P&gt; crosspointCL(const C &amp;c, const L &amp;l) {</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;P&gt; res;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;double d = distanceLP(l, c.p);      <font style="color:lightgreen;font-style:italic;">// 中心と直線の距離</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (abs(d - c.r) &lt; EPS) {  <font style="color:lightgreen;font-style:italic;">// 触れている</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.push_back(Projection(l, c.p));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return res;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (d &gt; c.r) return res;  <font style="color:lightgreen;font-style:italic;">// 離れている</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P h = Projection(l, c.p);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P u = sqrt(c.r * c.r - d * d) * (l.p2- l.p1) / abs(l.p2 - l.p1);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;res.push_back(h + u);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;res.push_back(h - u);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return res;</li>
+        <li>}</li>
+        <li></li>
+        <li>int intersectCC(const C &amp;c1, const C &amp;c2) {</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;double d = abs(c1.p - c2.p), r1 = c1.r, r2 = c2.r;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (r1 + r2 &lt; d) return 0;                   <font style="color:lightgreen;font-style:italic;">// 離れている</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (abs(r1 + r2 - d) &lt; EPS) return -2;  <font style="color:lightgreen;font-style:italic;">// 外接</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (abs(d + r1 - r2) &lt; EPS) return +1;  <font style="color:lightgreen;font-style:italic;">// c1 が c2 の中で内接</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (abs(d + r2 - r1) &lt; EPS) return -1;  <font style="color:lightgreen;font-style:italic;">// c2 が c1 の中で内接</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (d + r1 &lt; r2) return +3;                  <font style="color:lightgreen;font-style:italic;">// c1 が c2 の中</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (d + r2 &lt; r1) return -3;                  <font style="color:lightgreen;font-style:italic;">// c2 が c1 の中</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return 2;                                    <font style="color:lightgreen;font-style:italic;">// 2つの交点を持つ</font></li>
+        <li>}</li>
+        <li></li>
+        <li>vector&lt;P&gt; crosspointCC(const C &amp;c1, const C &amp;c2) {</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;P&gt; res;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;double r1 = c1.r, r2 = c2.r, d = abs(c1.p - c2.p);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (d&lt;EPS) return res;  <font style="color:lightgreen;font-style:italic;">// 中心が同じ</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;int i = intersectCC(c1, c2);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (i == +1 || i == -1) {  <font style="color:lightgreen;font-style:italic;">// 内接</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (r2 &lt; r1)</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.push_back(c1.p + r1 / d * (c2.p - c1.p));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.push_back(c2.p + r2 / d * (c1.p - c2.p));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return res;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (i == -2) {  <font style="color:lightgreen;font-style:italic;">// 外接</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.push_back((c1.p * c2.r + c2.p * c1.r) / (c1.r + c2.r));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return res;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if (i == 0 || i == +3 || i == -3) {  <font style="color:lightgreen;font-style:italic;">// 共通部分なし || 内部</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return res;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:lightgreen;font-style:italic;">// 2つの交点を持つ</font></li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;P p = c1.p - c2.p;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;double A = -2 * p.real(), B = -2 * p.imag();</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;double C = norm(c1.p) - norm(c2.p) - r1 * r1 + r2 * r2;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;L l;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;if(abs(A)&lt;EPS){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = L(P(0, -C / B), P(1, -C / B));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}else if(abs(B)&lt;EPS){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = L(P(-C / A, 0), P(-C / A, 1));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}else if(abs(C)&lt;EPS){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = L(P(0, 0), P(1, -A / B));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}else{</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l = L(P(0, -C / B), P(-C / A, 0));</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return crosspointCL(c1, l);  <font style="color:lightgreen;font-style:italic;">// Ax + By + C = 0</font></li>
+        <li>}</li>
+        <li>vector&lt;P&gt; points;</li>
+        <li>signed main(){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;int n;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;while(cin&gt;&gt;n and n){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(i,n){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;double x,y;cin&gt;&gt;x&gt;&gt;y;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;P a=P(x,y);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;points.push_back(a);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int ans=1;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector&lt;P&gt; cent;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(i,n)for(int j=i+1;j&lt;n;j++){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C c1=C(points[i],1),c2=C(points[j],1);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cent=crosspointCC(c1,c2);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(l,cent.size()){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int tmp=0;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rep(k,n){</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(abs(points[k]-cent[l])&lt;=1+EPS) tmp++;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ans=max(ans,tmp);</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cout&lt;&lt;ans&lt;&lt;endl;</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;points.clear();</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;}</li>
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;return 0;</li>
+        <li>}</li>
+        </ol></code></div>
+</body>
