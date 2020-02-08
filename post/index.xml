@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Daruma3&#39;s diary</title>
+    <link>https://daruma3.github.io/daruma3diary/post/</link>
+    <description>Recent content in Posts on Daruma3&#39;s diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
+    <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
+    <lastBuildDate>Sat, 08 Feb 2020 11:46:23 +0900</lastBuildDate>
+    
+	<atom:link href="https://daruma3.github.io/daruma3diary/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Test</title>
+      <link>https://daruma3.github.io/daruma3diary/post/test/</link>
+      <pubDate>Sat, 08 Feb 2020 11:46:23 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/daruma3diary/post/test/</guid>
+      <description>これはテスト用 </description>
+    </item>
+    
+  </channel>
+</rss>
