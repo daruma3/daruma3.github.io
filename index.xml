@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
     <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
-    <lastBuildDate>Sat, 08 Feb 2020 11:46:23 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 08 Feb 2020 13:26:20 +0900</lastBuildDate>
     
 	<atom:link href="https://daruma3.github.io/daruma3diary/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tetest2</title>
+      <link>https://daruma3.github.io/daruma3diary/post/tetest2/</link>
+      <pubDate>Sat, 08 Feb 2020 13:26:20 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/daruma3diary/post/tetest2/</guid>
+      <description>なんかうまくいかない なんでやねんやろ</description>
+    </item>
     
     <item>
       <title>Test</title>
