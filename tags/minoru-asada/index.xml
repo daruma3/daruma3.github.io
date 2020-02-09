@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Daruma3`s diary</title>
-    <link>https://daruma3.github.io/</link>
-    <description>Recent content on Daruma3`s diary</description>
+    <title>Minoru Asada on Daruma3`s diary</title>
+    <link>https://daruma3.github.io/tags/minoru-asada/</link>
+    <description>Recent content in Minoru Asada on Daruma3`s diary</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
     <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
     <lastBuildDate>Sun, 09 Feb 2020 14:43:24 +0900</lastBuildDate>
     
-	<atom:link href="https://daruma3.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://daruma3.github.io/tags/minoru-asada/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -36,15 +36,6 @@
 ⇒ロボットを考える上での身体の重要性
 第四章 身体が脳を作る 赤ちゃんにおいては始めから脳が身体を支配しているのではない．身体と外部環境との相互的な やり取りからの学習が脳を発達させていく．
 胎児シミュレーションにおいては，身体を動かした結果生じたことから脳が身体の部分を認識するようになった．さらにこのシミュレーションは誕生後ハイハイ等をすることが確認された．</description>
-    </item>
-    
-    <item>
-      <title>About me</title>
-      <link>https://daruma3.github.io/page/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>motonari.k714@gmail.com (daruma3)</author>
-      <guid>https://daruma3.github.io/page/about/</guid>
-      <description>このサイトは管理者が本・論文等から得た知見・知識をため込んでおく場所です</description>
     </item>
     
   </channel>

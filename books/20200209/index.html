@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>『ロボットという思想』まとめ - Daruma3`s diary</title>
+  <meta name="description" content="データ  著者　浅田稔 出版年　2010 出版社　NHK出版    概要 人間の頭脳をロボットでどう再現するか
+⇒ソフトのみで人間の知能を再現することは不可能，体を持ち，環境を学習・経験することで 知能を得ることができる
+各章の要約 第一章　ロボットとは何だろう ロボットを通して人間とは何かを考えてみる，赤ちゃん型ロボットの開発，ロボカップ
+第二章　脳と学習の基本を知る   脳神経系の構造
+ 脊髄反射系 海馬と大脳皮質による空間表現 小脳，基底核，辺縁系による行動制御と学習    学習の種類
+ 教師あり学習  ボール投げ等，正解がある場合に学習者の誤りを指摘することで学習する．
+脳では小脳が担当．
+目標達成までの方法を与えるのが順モデル，目標から逆算するのが逆モデル．代表的手法には誤差逆伝播法がある．   強化学習  最終目標，又は最終目標に至るまでの正しい道のりを選んだときのみ&quot;報酬&quot;を与える．
+主に大脳基底核が担う．
+逐一具体的な行動を教えず，累積報酬が最大となるような行動を学習させる．   教師なし学習  同じシナプス結合を繰り返し信号が通ると結合が強くなる⇒ヘブ学習
+学習後は，一方のシナプスの発火で発火の組み合わせを思い出すことが可能⇒連想記憶
+大脳皮質が主に担当
+入力パターンが増加すると主成分分析によりデータ量を圧縮(2次元)，大脳皮質にマッピング(自己組織化)．入力層から競合層へのマッピングを繰り返す．
+ニューラルネットワークに応用      第三章　身体を内側から探る ロボットが学び，コミュニケーションをとるためには人間同様身体経験を経る必要がある
+人間と同じような皮膚や骨格構造を与えることで行動学習からスムーズな行動ができるようになる
+⇒ロボットを考える上での身体の重要性
+第四章 身体が脳を作る 赤ちゃんにおいては始めから脳が身体を支配しているのではない．身体と外部環境との相互的な やり取りからの学習が脳を発達させていく．
+胎児シミュレーションにおいては，身体を動かした結果生じたことから脳が身体の部分を認識するようになった．さらにこのシミュレーションは誕生後ハイハイ等をすることが確認された．">
+  <meta name="author" content="daruma3"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Daruma3`s diary",
+    
+    "url": "https:\/\/daruma3.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/daruma3.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/daruma3.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/daruma3.github.io\/books\/20200209\/",
+          "name": "『ロボットという思想』まとめ"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "daruma3"
+  },
+  "headline": "『ロボットという思想』まとめ",
+  "description" : "データ  著者　浅田稔 出版年　2010 出版社　NHK出版    概要 人間の頭脳をロボットでどう再現するか\n⇒ソフトのみで人間の知能を再現することは不可能，体を持ち，環境を学習・経験することで 知能を得ることができる\n各章の要約 第一章　ロボットとは何だろう ロボットを通して人間とは何かを考えてみる，赤ちゃん型ロボットの開発，ロボカップ\n第二章　脳と学習の基本を知る   脳神経系の構造\n 脊髄反射系 海馬と大脳皮質による空間表現 小脳，基底核，辺縁系による行動制御と学習    学習の種類\n 教師あり学習  ボール投げ等，正解がある場合に学習者の誤りを指摘することで学習する．\n脳では小脳が担当．\n目標達成までの方法を与えるのが順モデル，目標から逆算するのが逆モデル．代表的手法には誤差逆伝播法がある．   強化学習  最終目標，又は最終目標に至るまでの正しい道のりを選んだときのみ\x26quot;報酬\x26quot;を与える．\n主に大脳基底核が担う．\n逐一具体的な行動を教えず，累積報酬が最大となるような行動を学習させる．   教師なし学習  同じシナプス結合を繰り返し信号が通ると結合が強くなる⇒ヘブ学習\n学習後は，一方のシナプスの発火で発火の組み合わせを思い出すことが可能⇒連想記憶\n大脳皮質が主に担当\n入力パターンが増加すると主成分分析によりデータ量を圧縮(2次元)，大脳皮質にマッピング(自己組織化)．入力層から競合層へのマッピングを繰り返す．\nニューラルネットワークに応用      第三章　身体を内側から探る ロボットが学び，コミュニケーションをとるためには人間同様身体経験を経る必要がある\n人間と同じような皮膚や骨格構造を与えることで行動学習からスムーズな行動ができるようになる\n⇒ロボットを考える上での身体の重要性\n第四章 身体が脳を作る 赤ちゃんにおいては始めから脳が身体を支配しているのではない．身体と外部環境との相互的な やり取りからの学習が脳を発達させていく．\n胎児シミュレーションにおいては，身体を動かした結果生じたことから脳が身体の部分を認識するようになった．さらにこのシミュレーションは誕生後ハイハイ等をすることが確認された．",
+  "inLanguage" : "en",
+  "wordCount":  69 ,
+  "datePublished" : "2020-02-09T14:43:24",
+  "dateModified" : "2020-02-09T14:43:24",
+  "image" : "https:\/\/daruma3.github.io\/img\/avatar-icon.png",
+  "keywords" : [ "books, Minoru Asada, Robot" ],
+  "mainEntityOfPage" : "https:\/\/daruma3.github.io\/books\/20200209\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/daruma3.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/daruma3.github.io\/img\/avatar-icon.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="『ロボットという思想』まとめ" />
+<meta property="og:description" content="データ  著者　浅田稔 出版年　2010 出版社　NHK出版    概要 人間の頭脳をロボットでどう再現するか
+⇒ソフトのみで人間の知能を再現することは不可能，体を持ち，環境を学習・経験することで 知能を得ることができる
+各章の要約 第一章　ロボットとは何だろう ロボットを通して人間とは何かを考えてみる，赤ちゃん型ロボットの開発，ロボカップ
+第二章　脳と学習の基本を知る   脳神経系の構造
+ 脊髄反射系 海馬と大脳皮質による空間表現 小脳，基底核，辺縁系による行動制御と学習    学習の種類
+ 教師あり学習  ボール投げ等，正解がある場合に学習者の誤りを指摘することで学習する．
+脳では小脳が担当．
+目標達成までの方法を与えるのが順モデル，目標から逆算するのが逆モデル．代表的手法には誤差逆伝播法がある．   強化学習  最終目標，又は最終目標に至るまでの正しい道のりを選んだときのみ&quot;報酬&quot;を与える．
+主に大脳基底核が担う．
+逐一具体的な行動を教えず，累積報酬が最大となるような行動を学習させる．   教師なし学習  同じシナプス結合を繰り返し信号が通ると結合が強くなる⇒ヘブ学習
+学習後は，一方のシナプスの発火で発火の組み合わせを思い出すことが可能⇒連想記憶
+大脳皮質が主に担当
+入力パターンが増加すると主成分分析によりデータ量を圧縮(2次元)，大脳皮質にマッピング(自己組織化)．入力層から競合層へのマッピングを繰り返す．
+ニューラルネットワークに応用      第三章　身体を内側から探る ロボットが学び，コミュニケーションをとるためには人間同様身体経験を経る必要がある
+人間と同じような皮膚や骨格構造を与えることで行動学習からスムーズな行動ができるようになる
+⇒ロボットを考える上での身体の重要性
+第四章 身体が脳を作る 赤ちゃんにおいては始めから脳が身体を支配しているのではない．身体と外部環境との相互的な やり取りからの学習が脳を発達させていく．
+胎児シミュレーションにおいては，身体を動かした結果生じたことから脳が身体の部分を認識するようになった．さらにこのシミュレーションは誕生後ハイハイ等をすることが確認された．">
+<meta property="og:image" content="https://daruma3.github.io/img/avatar-icon.png" />
+<meta property="og:url" content="https://daruma3.github.io/books/20200209/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Daruma3`s diary" />
+
+  <meta name="twitter:title" content="『ロボットという思想』まとめ" />
+  <meta name="twitter:description" content="データ  著者　浅田稔 出版年　2010 出版社　NHK出版    概要 人間の頭脳をロボットでどう再現するか
+⇒ソフトのみで人間の知能を再現することは不可能，体を持ち，環境を学習・経験することで 知能を得ることができる
+各章の要約 第一章　ロボットとは何だろう ロボットを通して人間とは何かを考えてみる，赤ちゃん型ロボットの開発，ロボカップ
+第二章　脳と学習の基本を知る   脳神経系の構造
+ 脊髄 …">
+  <meta name="twitter:image" content="https://daruma3.github.io/img/avatar-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@narimotoyoshi" />
+  <meta name="twitter:creator" content="@narimotoyoshi" />
+  <link href='https://daruma3.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.64.0" />
+  <link rel="alternate" href="https://daruma3.github.io/index.xml" type="application/rss+xml" title="Daruma3`s diary"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://daruma3.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://daruma3.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://daruma3.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://daruma3.github.io/">Daruma3`s diary</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Daruma3`s diary" href="https://daruma3.github.io/">
+            <img class="avatar-img" src="https://daruma3.github.io/img/avatar-icon.png" alt="Daruma3`s diary" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="books-heading">
+              
+                <h1>『ロボットという思想』まとめ</h1>
+              
+              
+                <hr class="small">
+              
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <ul>
+<li>データ
+<ul>
+<li>著者　浅田稔</li>
+<li>出版年　2010</li>
+<li>出版社　NHK出版</li>
+</ul>
+</li>
+</ul>
+<h3 id="概要">概要</h3>
+<p>人間の頭脳をロボットでどう再現するか<br>
+⇒ソフトのみで人間の知能を再現することは不可能，体を持ち，環境を学習・経験することで
+知能を得ることができる</p>
+<h3 id="各章の要約">各章の要約</h3>
+<h4 id="第一章ロボットとは何だろう">第一章　ロボットとは何だろう</h4>
+<p>ロボットを通して人間とは何かを考えてみる，赤ちゃん型ロボットの開発，ロボカップ</p>
+<h4 id="第二章脳と学習の基本を知る">第二章　脳と学習の基本を知る</h4>
+<ul>
+<li>
+<p>脳神経系の構造</p>
+<ul>
+<li>脊髄反射系</li>
+<li>海馬と大脳皮質による空間表現</li>
+<li>小脳，基底核，辺縁系による行動制御と学習</li>
+</ul>
+</li>
+<li>
+<p>学習の種類</p>
+<ul>
+<li>教師あり学習
+<ul>
+<li>ボール投げ等，正解がある場合に学習者の誤りを指摘することで学習する．<br>
+脳では小脳が担当．<br>
+目標達成までの方法を与えるのが順モデル，目標から逆算するのが逆モデル．代表的手法には誤差逆伝播法がある．</li>
+</ul>
+</li>
+<li>強化学習
+<ul>
+<li>最終目標，又は最終目標に至るまでの正しい道のりを選んだときのみ&quot;報酬&quot;を与える．<br>
+主に大脳基底核が担う．<br>
+逐一具体的な行動を教えず，累積報酬が最大となるような行動を学習させる．</li>
+</ul>
+</li>
+<li>教師なし学習
+<ul>
+<li>同じシナプス結合を繰り返し信号が通ると結合が強くなる⇒ヘブ学習<br>
+学習後は，一方のシナプスの発火で発火の組み合わせを思い出すことが可能⇒連想記憶<br>
+大脳皮質が主に担当<br>
+入力パターンが増加すると主成分分析によりデータ量を圧縮(2次元)，大脳皮質にマッピング(自己組織化)．入力層から競合層へのマッピングを繰り返す．<br>
+ニューラルネットワークに応用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="第三章身体を内側から探る">第三章　身体を内側から探る</h4>
+<p>ロボットが学び，コミュニケーションをとるためには人間同様身体経験を経る必要がある<br>
+人間と同じような皮膚や骨格構造を与えることで行動学習からスムーズな行動ができるようになる<br>
+⇒ロボットを考える上での身体の重要性</p>
+<h4 id="第四章-身体が脳を作る">第四章 身体が脳を作る</h4>
+<p>赤ちゃんにおいては始めから脳が身体を支配しているのではない．身体と外部環境との相互的な
+やり取りからの学習が脳を発達させていく．<br>
+胎児シミュレーションにおいては，身体を動かした結果生じたことから脳が身体の部分を認識するようになった．さらにこのシミュレーションは誕生後ハイハイ等をすることが確認された．<br>
+胎児シミュレーション:最低限の脳の基本構造を与え，さらに物理的身体運動パターンの生成を
+可能にしておくと，自己組織化学習とヘブ学習により体性感覚マップを獲得することを確認した．<br>
+脳の発達の初期では身体の運動を通じて脳が身体を認識することが判明した．</p>
+<h4 id="第五章成長するロボットを作る">第五章　成長するロボットを作る</h4>
+<p>胎児:個体内での学習⇔個体外での学習<br>
+音声模倣，共同注意(ブートストラップ学習:視覚注視＋自己評価型学習，もし自身で成功を確認したらそのパターンのみ学習していく)<br>
+ミラーニューロンシステム:他者の行動から他者の目的を理解，他者の意図の理解<br>
+⇐自分でその行動をできなければ理解することはできない，理解とは対象を自分の範囲の中で当てはめていくこと，そのため，行為を経験することを実現しておくための身体は理解することに必要</p>
+<ul>
+<li>パターンの抽象化
+<ul>
+<li>イコン:一対一対応</li>
+<li>インデックス:一対多対応，ここまでは強化学習，行動学習により学習可能</li>
+<li>シンボル:言語による抽象化のレベル</li>
+</ul>
+</li>
+</ul>
+<h4 id="第六章ココロが生まれる条件を探る">第六章　ココロが生まれる条件を探る</h4>
+<p>共感と空間把握<br>
+共感:自分の表情を真似する人間の顔をヘブ学習，自分の顔を推定，感情とすり合わせることで他者の感情を推定できるようになる<br>
+空間把握:自分の手をランダムに動かしながら，その運動指令からどのように手が動くか(順モデル)と，その手の位置までどのように動かすべきか(視覚情報から運動指令へのマッチングによる逆モデル)を学習させた．結果，ターゲットを提示するとそこまで手を伸ばすようになった(発達による随伴性の低下)</p>
+<h4 id="第七章知能を生み出す困難とは">第七章　知能を生み出す困難とは</h4>
+<p>一般的な動物の知性は進化的過程によるもの(ハチのダンスなど)<br>
+人間の行動を理解する，記号接地させ，言語を獲得するためにはロボットも人間と同じ身体的構造を持ち，人との相互作用を経験することが必要条件である．<br>
+コミュニケーション及び行動の理解は相手も同じ人間で，同様の身体的構造を持つと仮定して達成される．</p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://daruma3.github.io//tags/books/">books</a>&nbsp;
+            
+              <a href="https://daruma3.github.io//tags/minoru-asada/">Minoru Asada</a>&nbsp;
+            
+              <a href="https://daruma3.github.io//tags/robot/">Robot</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fdaruma3.github.io%2fbooks%2f20200209%2f&amp;text=%e3%80%8e%e3%83%ad%e3%83%9c%e3%83%83%e3%83%88%e3%81%a8%e3%81%84%e3%81%86%e6%80%9d%e6%83%b3%e3%80%8f%e3%81%be%e3%81%a8%e3%82%81&amp;via=narimotoyoshi" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fdaruma3.github.io%2fbooks%2f20200209%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fdaruma3.github.io%2fbooks%2f20200209%2f&amp;title=%e3%80%8e%e3%83%ad%e3%83%9c%e3%83%83%e3%83%88%e3%81%a8%e3%81%84%e3%81%86%e6%80%9d%e6%83%b3%e3%80%8f%e3%81%be%e3%81%a8%e3%82%81" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fdaruma3.github.io%2fbooks%2f20200209%2f&amp;title=%e3%80%8e%e3%83%ad%e3%83%9c%e3%83%83%e3%83%88%e3%81%a8%e3%81%84%e3%81%86%e6%80%9d%e6%83%b3%e3%80%8f%e3%81%be%e3%81%a8%e3%82%81" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fdaruma3.github.io%2fbooks%2f20200209%2f&amp;title=%e3%80%8e%e3%83%ad%e3%83%9c%e3%83%83%e3%83%88%e3%81%a8%e3%81%84%e3%81%86%e6%80%9d%e6%83%b3%e3%80%8f%e3%81%be%e3%81%a8%e3%82%81" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fdaruma3.github.io%2fbooks%2f20200209%2f&amp;description=%e3%80%8e%e3%83%ad%e3%83%9c%e3%83%83%e3%83%88%e3%81%a8%e3%81%84%e3%81%86%e6%80%9d%e6%83%b3%e3%80%8f%e3%81%be%e3%81%a8%e3%82%81" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:motonari.k714@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/daruma3" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/narimotoyoshi" title="Twitter">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              daruma3
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://daruma3.github.io/">Daruma3`s diary</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.64.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://daruma3.github.io/js/main.js"></script>
+<script src="https://daruma3.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://daruma3.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

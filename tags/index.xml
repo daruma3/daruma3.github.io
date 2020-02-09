@@ -7,9 +7,37 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
     <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
+    <lastBuildDate>Sun, 09 Feb 2020 14:43:24 +0900</lastBuildDate>
     
 	<atom:link href="https://daruma3.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>books</title>
+      <link>https://daruma3.github.io/tags/books/</link>
+      <pubDate>Sun, 09 Feb 2020 14:43:24 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/tags/books/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Minoru Asada</title>
+      <link>https://daruma3.github.io/tags/minoru-asada/</link>
+      <pubDate>Sun, 09 Feb 2020 14:43:24 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/tags/minoru-asada/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Robot</title>
+      <link>https://daruma3.github.io/tags/robot/</link>
+      <pubDate>Sun, 09 Feb 2020 14:43:24 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/tags/robot/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
