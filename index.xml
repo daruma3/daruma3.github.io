@@ -7,19 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
     <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
-    <lastBuildDate>Sun, 09 Feb 2020 12:46:34 +0900</lastBuildDate>
     
 	<atom:link href="https://daruma3.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Demo</title>
-      <link>https://daruma3.github.io/post/demo/</link>
-      <pubDate>Sun, 09 Feb 2020 12:46:34 +0900</pubDate>
-      <author>motonari.k714@gmail.com (daruma3)</author>
-      <guid>https://daruma3.github.io/post/demo/</guid>
-      <description>これはデモです やっとうまくいったかな？</description>
-    </item>
     
     <item>
       <title>About me</title>
