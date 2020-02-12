@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HRI on Daruma3`s diary</title>
+    <link>https://daruma3.github.io/tags/hri/</link>
+    <description>Recent content in HRI on Daruma3`s diary</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
+    <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
+    <lastBuildDate>Wed, 12 Feb 2020 00:41:09 +0900</lastBuildDate>
+    
+	<atom:link href="https://daruma3.github.io/tags/hri/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>『Common Meterics for Human-Robot Interaction』まとめ</title>
+      <link>https://daruma3.github.io/thesis/20200212/</link>
+      <pubDate>Wed, 12 Feb 2020 00:41:09 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/thesis/20200212/</guid>
+      <description>Abstract Authors describe about the need for toolkit of HRI metrics. Then they describe about the framework of their work, and identify important biasing factors. Finally, they suggest common metrics for standardization and a case study.
+Summary In HRI, the field is too diverse to define common metrics. So the metrics (Such as NIST Urban Search and Rescue arena) which are used nowadays are half-way. To analyze and organize metrics of HRI, in this paper, three aspects, human, robot, and system are should be focused.</description>
+    </item>
+    
+  </channel>
+</rss>
