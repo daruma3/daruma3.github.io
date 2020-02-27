@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
     <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
-    <lastBuildDate>Sun, 16 Feb 2020 20:52:04 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 22:36:42 +0900</lastBuildDate>
     
 	<atom:link href="https://daruma3.github.io/thesis/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>『脳の意思決定機構と強化学習』まとめ</title>
+      <link>https://daruma3.github.io/thesis/20200223/</link>
+      <pubDate>Sun, 23 Feb 2020 22:36:42 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/thesis/20200223/</guid>
+      <description>強化学習について 大脳基底核の強化学習モデル 大脳基底核は，大脳皮質からの入力を受けて，視床を経て大脳皮質に出力を送るという大脳皮質-基底核ループを構成している．大脳基底核の入力部にあたる線条体は，腹側被蓋野(VTA)や淡蒼球(GP)，黒質(SN)に投射している．黒質は黒質緻密部(SNc)と黒質網様部(SNr)に，淡蒼球は外節(GPe)と内節(GPi)にそれぞれ二分され，大脳基底核の出力部を構成するGPiとSNr，ドーパミン作動性ニューロンが多く集まるSNcとVTAはそれぞれ，機能的に等価な領域とみなせる．
+線条体はストリオゾームとマトリクスという二つの領域からなる．線条体から大脳基底核の出力部 に至る投射は二つの経路があり，それぞれ線条体から直接投射する直接経路と，GPeと視床下核(STN)を経由してGPiやSNcに至る間接経路と呼ばれている．また，線条体を介さずに皮質からSTNに直接投射している経路もあり，ハイパー直接経路と呼ばれている．</description>
+    </item>
     
     <item>
       <title>『人はなぜ感情を持つのか』まとめ</title>

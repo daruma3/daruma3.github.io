@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
     <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
-    <lastBuildDate>Sun, 16 Feb 2020 20:52:04 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 22:36:42 +0900</lastBuildDate>
     
 	<atom:link href="https://daruma3.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Neuroscience</title>
+      <link>https://daruma3.github.io/tags/neuroscience/</link>
+      <pubDate>Sun, 23 Feb 2020 22:36:42 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/tags/neuroscience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RL</title>
+      <link>https://daruma3.github.io/tags/rl/</link>
+      <pubDate>Sun, 23 Feb 2020 22:36:42 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/tags/rl/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>emotion</title>
