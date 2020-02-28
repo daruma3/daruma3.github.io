@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>motonari.k714@gmail.com (daruma3)</managingEditor>
     <webMaster>motonari.k714@gmail.com (daruma3)</webMaster>
-    <lastBuildDate>Sun, 23 Feb 2020 22:36:42 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 11:33:11 +0900</lastBuildDate>
     
 	<atom:link href="https://daruma3.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>新人研修5日目</title>
+      <link>https://daruma3.github.io/lecture/20200208/</link>
+      <pubDate>Fri, 28 Feb 2020 11:33:11 +0900</pubDate>
+      <author>motonari.k714@gmail.com (daruma3)</author>
+      <guid>https://daruma3.github.io/lecture/20200208/</guid>
+      <description> DL  エポック  訓練データを何回回すか   イテレーション  重みが更新された回数   バッチサイズ  訓練データのうちどのくらいの割合をセットとして学習するか      CNNは空間的構造をモデル化するのに強く，RNNは時間的構造に強い
+ 教師あり学習  与えられたデータを分類する:クラス分類  音楽のジャンル判定やメールのスパム判定等   関連性のある過去の数値から未来の数値を予想:回帰  売り上げの予測など      </description>
+    </item>
     
     <item>
       <title>『脳の意思決定機構と強化学習』まとめ</title>
